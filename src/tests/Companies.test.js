@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme'
-import { Companies } from './Companies'
+import { Companies } from '../components/Companies'
 
 describe('<Companies />', () => {
   const companies = [

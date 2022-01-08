@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 import { createStructuredSelector } from 'reselect'
 
-import { ReduxState, Company } from './types'
-import { getCompanies } from './selectors'
+import { ReduxState, Company } from '../types/types'
+import { getCompanies } from '../utils/selectors'
 
 import CompanyLink from './CompanyLink'
 

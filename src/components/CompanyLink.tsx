@@ -1,4 +1,4 @@
-import { Company } from './types'
+import { Company } from '../types/types'
 
 const CompanyLink = ({ name }: Company) => (
   <div>{name}</div>
