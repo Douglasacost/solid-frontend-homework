@@ -4,8 +4,18 @@ import { createReducer } from 'typesafe-actions'
 import { Action, Company } from '../types/types'
 import * as actions from './actions'
 
-export const isDropdownMenuVisible = createReducer<boolean, Action>(false)
-  .handleAction(actions.toggleDropdownMenuVisibility, (state) => !state)
+export const ui = createReducer<{
+  isDropdownMenuVisible: boolean,
+  isModalVisible: boolean,
+}, Action>({ isDropdownMenuVisible: false, isModalVisible: false })
+  .handleAction(actions.toggleDropdownMenuVisibility, (state) => ({
+    ...state,
+    isDropdownMenuVisible: !state.isDropdownMenuVisible,
+  }))
+  .handleAction(actions.setModalVisibility, (state, action) => ({
+    ...state,
+    isModalVisible: action.payload,
+  }))
   
 export const selectedCompanyId = createReducer<number | null, Action>(null)
   .handleAction(actions.setSelectedCompanyId, (_, action) => action.payload)
@@ -13,7 +23,7 @@ export const selectedCompanyId = createReducer<number | null, Action>(null)
 export const companies = createReducer<Array<Company>, Action>([])
 
 export default combineReducers({
-  isDropdownMenuVisible,
+  ui,
   selectedCompanyId,
   companies,
 })

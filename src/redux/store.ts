@@ -6,7 +6,10 @@ import reducer from './reducer'
 import { ReduxState } from '../types/types'
 
 const initialState: ReduxState = {
-  isDropdownMenuVisible: false,
+  ui: {
+    isDropdownMenuVisible: false,
+    isModalVisible: false,
+  },
   selectedCompanyId: 1,
   companies: [
     { id: 1, name: 'Viljatootja AS' },

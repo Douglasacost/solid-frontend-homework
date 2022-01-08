@@ -1,7 +1,13 @@
 import MenuLink from './MenuLink'
 import Companies from './Companies'
+import { connect } from 'react-redux';
+import { setModalVisibility } from '../redux/actions';
 
-const DropdownMenu = () => (
+type ReduxProps = {
+  setModalVisibility: (isVisible: boolean) => void,
+}
+
+const DropdownMenu = ({ setModalVisibility }: ReduxProps) => (
   <div className='card dropdown dropdown__container'>
     <div className='dropdown__section'>
       <Companies />
@@ -30,6 +36,7 @@ const DropdownMenu = () => (
         icon="settings"
       />
       <MenuLink
+        handleOnClick={() => setModalVisibility(true)}
         text="Connec to Wallet"
         icon="account_balance_wallet"
       />
@@ -42,4 +49,8 @@ const DropdownMenu = () => (
   </div>
 )
 
-export default DropdownMenu
+
+export default connect(
+  null,
+  { setModalVisibility }
+)(DropdownMenu)

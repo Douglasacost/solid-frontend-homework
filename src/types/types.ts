@@ -3,7 +3,10 @@ import { ActionType } from 'typesafe-actions'
 import * as actions from '../redux/actions'
 
 export type ReduxState = {
-  isDropdownMenuVisible: boolean,
+  ui: {
+    isDropdownMenuVisible: boolean,
+    isModalVisible: boolean,
+  }
   companies: Array<Company>,
   selectedCompanyId: number | null,
 }
