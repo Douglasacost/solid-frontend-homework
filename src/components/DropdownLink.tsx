@@ -16,7 +16,7 @@ type DispatchProps = {
 }
 
 export const DropdownLink = ({ isDropdownMenuVisible, toggleDropdownMenuVisibility }: ReduxProps & DispatchProps) => (
-  <>
+  <div className="nav__container">
     <div className="nav__link" onClick={toggleDropdownMenuVisibility} data-test-nav-link>
       <div className="nav__link-text-wrapper">
         <div className="nav__link-text">
@@ -34,7 +34,7 @@ export const DropdownLink = ({ isDropdownMenuVisible, toggleDropdownMenuVisibili
     </div>
 
     {isDropdownMenuVisible && <DropdownMenu />}
-  </>
+  </div>
 )
 
 

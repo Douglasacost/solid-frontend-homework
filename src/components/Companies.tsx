@@ -12,7 +12,7 @@ type ReduxProps = {
 
 export const Companies = ({ companies }: ReduxProps) => (
   <>
-    <div>Your companies</div>
+    <div className='dropdown__section_title'>Your companies</div>
 
     {companies.map((company) => <CompanyLink key={company.id} {...company} />)}
   </>

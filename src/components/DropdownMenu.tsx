@@ -2,10 +2,12 @@ import MenuLink from './MenuLink'
 import Companies from './Companies'
 
 const DropdownMenu = () => (
-  <div>
-    <Companies />
+  <div className='card dropdown dropdown__container'>
+    <div className='dropdown__section'>
+      <Companies />
+    </div>
 
-    <div>
+    <div className='dropdown__section'>
       <MenuLink
         text="Get the mobile app"
         icon="phone_iphone"
@@ -22,13 +24,17 @@ const DropdownMenu = () => (
       />
     </div>
 
-    <div>
+    <div className='dropdown__section'>
       <MenuLink
         text="Settings"
         icon="settings"
       />
-
       <MenuLink
+        text="Connec to Wallet"
+        icon="account_balance_wallet"
+      />
+      <MenuLink
+        logout
         text="Log out"
         icon="exit_to_app"
       />
