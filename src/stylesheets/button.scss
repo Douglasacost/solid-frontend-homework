@@ -4,6 +4,10 @@
     text-align: center;
     border: none;
     transition: 0.3s;
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
     cursor: pointer;
     &:hover, &:focus {
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -22,6 +26,7 @@
 }
 
 .button__green {
+    height: 36px;
     background: #37A447;
     color: #FFF;
 }
