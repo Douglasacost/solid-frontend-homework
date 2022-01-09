@@ -1,15 +1,18 @@
 import useToastMessage from './useToastMessage';
+import { useEffect, useState } from 'react';
 
+const { ethereum } = window;
 const useMetamask = () => {
     const { show } = useToastMessage()
+    const [loading, setLoading] = useState(true);
+    const [connected, setConnected] = useState(false);
     const isMetaMaskInstalled = () => {
-        const { ethereum } = window;
         return Boolean(ethereum && ethereum.isMetaMask);
     };
 
     const connect = async () => {
         try {
-            await window.ethereum.enable()
+            await ethereum.enable()
             show("Connected to Metamask", 'success')
             return true
         } catch (error) {
@@ -17,8 +20,7 @@ const useMetamask = () => {
         }
     }
 
-    const isAlreadyConnected = async(onFinally: Function) => {
-        const { ethereum } = window;
+    const isAlreadyConnected = async (onFinally: Function) => {
         try {
             const accounts = await ethereum.request({ method: 'eth_accounts' });
             show("Already connected to Metamask", 'success')
@@ -30,7 +32,26 @@ const useMetamask = () => {
             onFinally()
         }
     }
-    return { isMetaMaskInstalled, connect, isAlreadyConnected }
+
+    useEffect(() => {
+        if (ethereum) {
+            ethereum.on('chainChanged', (chainId: number) => {
+                window.location.reload();
+            });
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        (async () => {
+            if (await isAlreadyConnected(() => setLoading(false))) {
+                setConnected(true)
+            }
+        })()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    return { isMetaMaskInstalled, connect, isAlreadyConnected, connected, loading }
 }
 
 export default useMetamask

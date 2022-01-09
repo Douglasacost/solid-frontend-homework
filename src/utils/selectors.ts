@@ -17,3 +17,6 @@ export const getSelectedCompany = (state: ReduxState) =>
 
 export const getCompanies = (state: ReduxState) =>
   state.companies
+
+export const getBalanceCheckFormData = (state: ReduxState) =>
+  state.balanceCheck

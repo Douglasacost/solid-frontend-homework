@@ -8,6 +8,13 @@ export type ReduxState = {
     isModalVisible: boolean,
     modalName: "metamask" | "balance-check",
   }
+  balanceCheck: {
+    isLoading: boolean
+    isError: boolean
+    errorMessage: string
+    balance: string
+    address: string
+  }
   companies: Array<Company>,
   selectedCompanyId: number | null,
 }

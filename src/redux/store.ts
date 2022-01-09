@@ -11,6 +11,13 @@ const initialState: ReduxState = {
     isModalVisible: false,
     modalName: 'metamask'
   },
+  balanceCheck: {
+    isLoading: false,
+    isError: false,
+    errorMessage: '',
+    balance: '',
+    address: '',
+  },
   selectedCompanyId: 1,
   companies: [
     { id: 1, name: 'Viljatootja AS' },

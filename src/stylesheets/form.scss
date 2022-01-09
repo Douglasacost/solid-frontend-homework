@@ -17,14 +17,31 @@
     width: 100%;
     justify-content: flex-end;
     align-items: center;
+    .input-adorn, input {
+        width: 75%;
+    }
     input {
         border: 1px solid #B1B1B4;
         box-sizing: border-box;
         border-radius: 4px;
         padding: 8px;
-        width: 75%;
     }
     input:read-only {
         background: #F4F6F9;
+    }
+}
+
+.input-adorn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    span {
+        position: absolute;
+        right: 0;
+        padding: 8px;
+        color: #646468;
+    }
+    input {
+        width: 100%;
     }
 }
