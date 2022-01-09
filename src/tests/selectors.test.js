@@ -2,7 +2,7 @@ import {
   getIsDropdownMenuVisible,
   isCompanySelected,
   getCompanies,
-} from './selectors'
+} from '../utils/selectors'
 
 describe('getIsDropdownMenuVisible()', () => {
   const state = { isDropdownMenuVisible: true }

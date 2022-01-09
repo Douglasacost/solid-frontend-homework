@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme'
-import { DropdownLink } from './DropdownLink'
+import { DropdownLink } from '../components/DropdownLink'
 
 describe('<DropdownLink />', () => {
   const toggleDropdownMenuVisibilityMock = jest.fn()

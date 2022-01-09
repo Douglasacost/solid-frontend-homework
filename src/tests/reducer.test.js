@@ -1,5 +1,5 @@
-import * as actions from './actions'
-import { isDropdownMenuVisible, selectedCompanyId } from './reducer'
+import * as actions from '../redux/actions'
+import { isDropdownMenuVisible, selectedCompanyId } from '../redux/reducer'
 
 const doesNotUpdateState = (reducer, initialState) => {
   it('does not update state on a random action', () => {

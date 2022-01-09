@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme'
-import DropdownMenu from './DropdownMenu'
+import DropdownMenu from '../components/DropdownMenu'
 
 describe('<DropdownMenu />', () => {
   it('renders menu', () => {
-    expect(shallow(<DropdownMenu />)).toMatchSnapshot()
+    expect(shallow(<DropdownMenu setModalVisibility={() => null} />)).toMatchSnapshot()
   })
 })

@@ -1,5 +1,5 @@
 import { shallow } from 'enzyme'
-import MenuLink from './MenuLink'
+import MenuLink from '../components/MenuLink'
 
 describe('<MenuLink />', () => {
   it('renders link', () => {
