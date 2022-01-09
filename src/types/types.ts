@@ -6,6 +6,7 @@ export type ReduxState = {
   ui: {
     isDropdownMenuVisible: boolean,
     isModalVisible: boolean,
+    modalName: "metamask" | "balance-check",
   }
   companies: Array<Company>,
   selectedCompanyId: number | null,

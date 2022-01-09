@@ -6,6 +6,9 @@ export const getIsDropdownMenuVisible = (state: ReduxState) =>
 export const getIsModalVisible = (state: ReduxState) =>
   state.ui.isModalVisible
 
+export const getModalName = (state: ReduxState) =>
+  state.ui.modalName
+
 export const companySelectedId = (state: ReduxState) => 
   state.selectedCompanyId
 

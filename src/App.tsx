@@ -2,21 +2,27 @@ import './stylesheets/index.scss'
 
 import DropdownLink from './components/DropdownLink'
 import MetamaskForm from './components/Metamask'
-import Modal from './components/Modal';
-import { getIsModalVisible } from './utils/selectors';
+import Modal from './components/modal/Modal';
+import { getIsModalVisible, getModalName } from './utils/selectors';
 import { createStructuredSelector } from 'reselect';
 import { ReduxState } from './types/types';
 import { connect } from 'react-redux';
 
-type ReduxProps = {
-  isModalOpen: boolean,
+const modals = {
+  'metamask': <MetamaskForm />,
+  'balance-check': <div>Balance</div>,
 }
 
-const App = ({ isModalOpen }: ReduxProps) => (
+type ReduxProps = {
+  isModalOpen: boolean,
+  modalName: keyof typeof modals,
+}
+
+const App = ({ isModalOpen, modalName }: ReduxProps) => (
   <nav className="nav">
     <DropdownLink />
     <Modal open={isModalOpen} >
-      <MetamaskForm />
+      {modals[modalName]}
     </Modal>
   </nav>
 )
@@ -24,6 +30,7 @@ const App = ({ isModalOpen }: ReduxProps) => (
 export default connect(
   createStructuredSelector<ReduxState, ReduxProps>({
     isModalOpen: getIsModalVisible,
+    modalName: getModalName,
   }),
 )(App)
 

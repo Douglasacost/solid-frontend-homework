@@ -1,0 +1,27 @@
+.button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-align: center;
+    border: none;
+    transition: 0.3s;
+    cursor: pointer;
+    &:hover, &:focus {
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+}
+
+.button__circle {
+    padding: 0;
+    background: #FFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.button__green {
+    background: #37A447;
+    color: #FFF;
+}

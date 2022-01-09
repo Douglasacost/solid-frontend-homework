@@ -9,6 +9,7 @@ const initialState: ReduxState = {
   ui: {
     isDropdownMenuVisible: false,
     isModalVisible: false,
+    modalName: 'metamask'
   },
   selectedCompanyId: 1,
   companies: [

@@ -5,3 +5,5 @@ export const toggleDropdownMenuVisibility = createAction('TOGGLE_DROPDOWN_MENU_V
 export const setSelectedCompanyId = createAction('SET_SELECTED_COMPANY_ID')<number>()
 
 export const setModalVisibility = createAction('SET_MODAL_VISIBILITY')<boolean>()
+
+export const setModalName = createAction('SET_MODAL_NAME')<string>()

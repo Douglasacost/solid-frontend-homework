@@ -7,7 +7,8 @@ import * as actions from './actions'
 export const ui = createReducer<{
   isDropdownMenuVisible: boolean,
   isModalVisible: boolean,
-}, Action>({ isDropdownMenuVisible: false, isModalVisible: false })
+  modalName: string,
+}, Action>({ isDropdownMenuVisible: false, isModalVisible: false, modalName: '' })
   .handleAction(actions.toggleDropdownMenuVisibility, (state) => ({
     ...state,
     isDropdownMenuVisible: !state.isDropdownMenuVisible,
@@ -15,6 +16,10 @@ export const ui = createReducer<{
   .handleAction(actions.setModalVisibility, (state, action) => ({
     ...state,
     isModalVisible: action.payload,
+  }))
+  .handleAction(actions.setModalName, (state, action) => ({
+    ...state,
+    modalName: action.payload,
   }))
   
 export const selectedCompanyId = createReducer<number | null, Action>(null)
