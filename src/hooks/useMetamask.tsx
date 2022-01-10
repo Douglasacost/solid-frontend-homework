@@ -1,9 +1,13 @@
 import useToastMessage from './useToastMessage';
 import { useEffect, useState } from 'react';
+import { currentNetwork } from '../costs/networks';
+import { useDispatch } from 'react-redux';
+import { setModalName, setModalVisibility } from '../redux/actions';
 
 const { ethereum } = window;
 const useMetamask = () => {
-    const { show } = useToastMessage()
+    const dispatch = useDispatch();
+    const { show } = useToastMessage();
     const [loading, setLoading] = useState(true);
     const [connected, setConnected] = useState(false);
     const isMetaMaskInstalled = () => {
@@ -24,7 +28,7 @@ const useMetamask = () => {
     const isAlreadyConnected = async (onFinally: Function) => {
         try {
             const accounts = await ethereum.request({ method: 'eth_accounts' });
-            if(accounts?.length) {
+            if (accounts?.length) {
                 show("Already connected to Metamask", 'success')
                 return true
             }
@@ -36,10 +40,24 @@ const useMetamask = () => {
         }
     }
 
+    const showNetworkError = () => {
+        dispatch(setModalName('wrong-network'))
+        dispatch(setModalVisibility(true))
+    }
+
     useEffect(() => {
         if (ethereum) {
-            ethereum.on('chainChanged', (chainId: number) => {
-                window.location.reload();
+            if (ethereum.chainId !== currentNetwork.chainId) {
+                showNetworkError()
+            }
+            ethereum.on('chainChanged', (chainId: string) => {
+                if (chainId !== currentNetwork.chainId) {
+                    showNetworkError()
+                } else if(!connected) {
+                    dispatch(setModalName('metamask'))
+                } else {
+                    dispatch(setModalVisibility(false))
+                }
             });
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps

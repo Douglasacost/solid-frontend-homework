@@ -8,10 +8,12 @@ import { createStructuredSelector } from 'reselect';
 import { ReduxState } from './types/types';
 import { connect } from 'react-redux';
 import BalanceCheck from './components/modals/BalanceCheck';
+import WrongNetwork from './components/modals/WrongNetwork';
 
 const modals = {
   'metamask': <MetamaskForm />,
   'balance-check': <BalanceCheck />,
+  'wrong-network': <WrongNetwork />
 }
 
 type ReduxProps = {
