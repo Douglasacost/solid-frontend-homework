@@ -14,6 +14,7 @@ const useMetamask = () => {
         try {
             await ethereum.enable()
             show("Connected to Metamask", 'success')
+            setConnected(true)
             return true
         } catch (error) {
             show("Something was wrong while connect your wallet", 'error')
@@ -23,9 +24,11 @@ const useMetamask = () => {
     const isAlreadyConnected = async (onFinally: Function) => {
         try {
             const accounts = await ethereum.request({ method: 'eth_accounts' });
-            show("Already connected to Metamask", 'success')
-            console.log(accounts)
-            return true
+            if(accounts?.length) {
+                show("Already connected to Metamask", 'success')
+                return true
+            }
+            throw new Error('No accounts found')
         } catch (error) {
             return false
         } finally {
